@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>你好呀，心怡</title>
+    <style>
+        body {
+            background-color: #f0f4f8;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #2b6cb0;
+            text-align: center;
+        }
+        p {
+            color: #333333;
+            font-size: 18px;
+            text-align: center;
+        }
+        .box {
+            background-color: #ffffff;
+            padding: 30px;
+            margin: 50px auto;
+            width: 350px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        button {
+            background-color: #2b6cb0;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #1a4f8a;
+        }
+        #timeDisplay {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box" id="myBox">
+        <h1>你好呀，心怡</h1>
+        <p>这是我用VS CODE写的第一个代码。</p >
+
+        <!-- 这里放了四个按钮，每个都有不同的功能 -->
+        <button onclick="sayHello()">点我弹问候</button>
+        <button onclick="changeColor()">换背景色</button>
+        <button onclick="countClick()">计数器</button>
+        <button onclick="showTime()">显示时间</button>
+
+        <!-- 这里用来显示计数和时间 -->
+        <p id="countDisplay">点击次数：0</p >
+        <p id="timeDisplay"></p >
+    </div>
+
+    <script>
+        // 按钮1：弹出问候语
+        function sayHello() {
+            alert("你好呀，心怡！");
+        }
+
+        // 按钮2：随机改变卡片背景颜色
+        function changeColor() {
+            var box = document.getElementById("myBox");
+            // 随机生成一个颜色
+            var colors = ["#ffffff", "#ffe4e1", "#e6f7ff", "#f0fff0", "#fffacd", "#f5f5dc"];
+            var randomColor = colors[Math.floor(Math.random() * colors.length)];
+            box.style.backgroundColor = randomColor;
+        }
+
+        // 按钮3：计数器，点击次数加1
+        var count = 0;
+        function countClick() {
+            count = count + 1;
+            document.getElementById("countDisplay").innerHTML = "点击次数：" + count;
+        }
+
+        // 按钮4：显示当前时间
+        function showTime() {
+            var now = new Date();
+            var timeString = "当前时间：" + now.toLocaleString();
+            document.getElementById("timeDisplay").innerHTML = timeString;
+        }
+    </script>
+
+</body>
+</html>
