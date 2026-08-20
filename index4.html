@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>这是一个网页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fdf6e3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+        }
+
+        .container {
+            background-color: #ffffff;
+            width: 480px;
+            padding: 40px 30px;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .greeting {
+            font-size: 32px;
+            color: #2d3436;
+            margin-bottom: 30px;
+        }
+
+        .greeting span {
+            color: #ff6b6b;
+        }
+
+        .game-area {
+            background-color: #fff8e7;
+            border-radius: 16px;
+            padding: 50px 30px;
+            position: relative;
+            min-height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #ffe0b2;
+        }
+
+        button {
+            padding: 14px 32px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        #catchBtn {
+            background-color: #ff6b6b;
+            color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 6px 0 #d63031;
+        }
+
+        #catchBtn:hover {
+            background-color: #ee5a5a;
+            box-shadow: 0 4px 0 #d63031;
+            transform: translateY(2px);
+        }
+
+        #catchBtn:active {
+            box-shadow: 0 2px 0 #d63031;
+            transform: translateY(4px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="greeting">你好呀，<span>心怡</span></div>
+
+        <div class="game-area" id="gameArea">
+            <button id="catchBtn">点我一下</button>
+        </div>
+    </div>
+
+    <script>
+        var catchBtn = document.getElementById("catchBtn");
+        var gameArea = document.getElementById("gameArea");
+
+        var count = 0;
+
+        catchBtn.addEventListener("click", function () {
+            count = count + 1;
+
+            if (count < 5) {
+                moveButton();
+            } else {
+                catchBtn.style.display = "none";
+                alert("恭喜你完成小游戏！希望你天天开心，多喝水，多吃饭，身体健康，心情美满。");
+            }
+        });
+
+        function moveButton() {
+            var areaWidth = gameArea.clientWidth;
+            var areaHeight = gameArea.clientHeight;
+
+            var btnWidth = catchBtn.clientWidth;
+            var btnHeight = catchBtn.clientHeight;
+
+            var maxX = areaWidth - btnWidth - 10;
+            var maxY = areaHeight - btnHeight - 10;
+
+            var randomX = Math.floor(Math.random() * maxX);
+            var randomY = Math.floor(Math.random() * maxY);
+
+            catchBtn.style.position = "absolute";
+            catchBtn.style.left = randomX + "px";
+            catchBtn.style.top = randomY + "px";
+        }
+    </script>
+
+</body>
+</html>
